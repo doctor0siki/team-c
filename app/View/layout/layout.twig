@@ -19,44 +19,21 @@
         .mb10 {
             margin: 0 0 10px 0;
         }
-
-        .link a {
-            display:block;
-            width: 100%; /* 横幅 */
-            padding-bottom:20px;
-        }
-        .link a:hover { 
-            color:#222222; 
-        }
-        .row-eq-height {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .card{
-            margin: 10px, 10px, 10px, 10px;
-        }
-        .card img{
-            width: 90%;
-            height: 90%;
-        }
-        .container{
-            align-content: stretch;
-        }
     </style>
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/hanbagu.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body role="document" class="bg-gray-light">
+<body role="document">
 {#メニューをセットします#}
 {% include 'menu/menu.twig' %}
 
 {# メインコンテンツを配置します#}
 {% block page_content %}{% endblock %}
 
-<!-- BootStrap3-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
+<!-- BootStrap3 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 {# 追加でスクリプトがほしいときにぶっこまれます #}
 {% block footer_scripts_add %}{% endblock %}
 {# フッタを表示します #}

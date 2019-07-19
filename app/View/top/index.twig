@@ -2,59 +2,25 @@
 {% extends "layout/layout.twig" %}
 
 {#HTMLのタイトルを定義します。#}
-{% block title %}俺たちのNo.1!{% endblock %}
+{% block title %}TOP{% endblock %}
 
 {# 適用させたいスタイルシートのパスを指定します #}
 {% block header_scripts_add %}
-<link rel="stylesheet" href="/assets/css/oreno.css">
-<link rel="stylesheet" href="/assets/css/skins/_all-skins.min.css">
-<link rel="stylesheet" href="/assets/css/adminlte.min.css">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
 {% endblock %}
 
 {#ここから表示したい情報を記載します。#}
-
 {% block page_content %}
-<body class="sidebar-mini sidebar-collapse">
-        <!-- Main content -->
-  <div class="mainnohako">
-    <div class="col-md-12">
-           <h2 class="page-header">Theme</h2>
-     <div class="row">
-      {% for row in record %}
-     <!-- Items -->
-      <div class="col-md-4 link">
-          <a href="../theme/{{ row.id }}">
-        <!-- Box Comment -->
-          <div class="box box-widget">
-            <div class="box-header with-border">
-              <h4><b>{{ row.title }}</b></h4>
-            </div>
-            <div class="box-body">
-              <img class="img-responsive pad" src="{{ row.imgPath }}" alt="Photo">
-
-                {% for item in row.items %}
-              <p>{{ item.name}}</p>
-                {% endfor %}
-              <span class="pull-right text-muted">{{ row.votes }} / {{ row.point }}  /Time </span>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          </a>
-        </div>
-      <!-- /Items -->
-         {% endfor %}
+    <div class="page-header text-center">
+        <h1>サービス名</h1>
     </div>
-   </div>
-   </div>
- </body>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                ここにコンテンツが入る
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {#共通フッタとして追記したい情報を記載します。#}
-{% block footer_scripts_add %}<!-- jQuery -->
-<script src="/assets/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/adminlte.min.js"></script>{% endblock %}
+{% block footer_scripts_add %}{% endblock %}

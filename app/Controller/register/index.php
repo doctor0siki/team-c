@@ -39,9 +39,6 @@ $app->post('/register/', function (Request $request, Response $response) {
     //DB登録に必要ない情報は削除します
     unset($data["password_re"]);
 
-    //入会ボーナスポイント500ptを付与する
-    $data["point"]=500;
-
     //DBに登録をする。戻り値は自動発番されたIDが返ってきます
     $id = $user->insert($data);
 

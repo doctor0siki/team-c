@@ -72,11 +72,11 @@ abstract class Dao
      * @param array $param WHERE句として指定したい条件を連想配列で指定します。値に%があると、部分一致などもできます
      * @param string $sort ソートしたいカラム名を指定します
      * @param string $order 昇順=ASC 降順=DESCを指定します
-     * @param int $limit 取得件数を指定します。デフォルト全県
+     * @param int $limit 取得件数を指定します。デフォルト10件
      * @param bool $fetch_all false=一件のみ取得します true=全件取得します
      * @return array|mixed 取得した情報を配列で返送します
      */
-    public function select(array $param, $sort = "", $order = "ASC", $limit = "", $fetch_all = false)
+    public function select(array $param, $sort = "", $order = "ASC", $limit = 10, $fetch_all = false)
     {
         //クエリビルダをインスタンス化
         $queryBuilder = new QueryBuilder($this->db);
@@ -193,11 +193,9 @@ abstract class Dao
             if ($key != "id") {
                 $queryBuilder->set($key, ":$key");
                 $queryBuilder->setParameter(":$key", $val);
-
             } else {
                 //idというカラム名の場合は、更新するIDを指定します
                 $queryBuilder->where($key . "=$val");
-
             }
         }
 
@@ -235,11 +233,6 @@ abstract class Dao
         //クエリ実行
         $queryBuilder->execute();
 
-    }
-
-    public function getTableName()
-    {
-        return $this->_table_name;
     }
 
 }

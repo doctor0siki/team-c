@@ -29,7 +29,7 @@ require __DIR__ . '/../src/dependencies.php';
 require __DIR__ . '/../src/middleware.php';
 
 // load routes
-$routers = glob(__DIR__ . '/../app/Controller/*/*.php');
+$routers = glob(__DIR__ . '/../app/Controller/*/*.*');
 foreach ($routers as $router) {
     require $router;
 }

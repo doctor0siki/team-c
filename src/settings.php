@@ -31,11 +31,11 @@ return [
 
             'connection' => [
                 'driver' => 'pdo_mysql',
-                'host' => 'intern-db',
+                'host' => 'localhost',
                 'port' => '3306',
-                'user' => 'team-c',
-                'password' => 'team-c!',
-                'dbname' => 'team-c',
+                'user' => 'team-a',
+                'password' => 'team-a!',
+                'dbname' => 'teama',
                 'charset' => 'utf8'
             ]
         ]
