@@ -40,17 +40,19 @@
                                 <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> ニックネーム</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{ name }}" required title="Please enter your name" placeholder="Toru">
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 郵便番号</label>
-                                <input type="text" class="form-control " id="zipcode" name="zipcode" value="{{ zipcode }}" style="width: 30%" required title="Please enter your zipcode" placeholder="110-0011">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 住所</label>
-                                <input type="text" class="form-control" id="address" name="address" value="{{ address }}" required title="Please enter your address" placeholder="東京都千代田区霞が関２丁目１−１">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 電話番号</label>
-                                <input type="tel" class="form-control" id="tel" name="tel" value="{{ tel }}" required title="Please enter your tel no" placeholder="03-1234-5678">
+                            <div class="form-group-attribute">
+                                <label>ジャンル選択</label>
+                                {% for p_attribute in parent_attribute %}
+                                  <details>
+                                    <summary><input type="checkbox" class="all{{p_attribute.id}}"/>{{p_attribute.name}}</summary>
+                                    {% for c_attribute in child_attribute %}
+                                      {% if p_attribute.id == c_attribute.parent_attribute_id %}
+                                        <input type="checkbox" name="parent{{p_attribute.id}}" />{{c_attribute.name}}
+                                      {% endif %}
+                                    {% endfor %}
+                                  </details>
+                                {% endfor %}
+
                             </div>
                             <div class="form-group">
                                 <label for="password" class="control-label">利用規約</label>
@@ -130,4 +132,12 @@
 {% endblock %}
 
 {#共通フッタとして追記したい情報を記載します。#}
-{% block footer_scripts_add %}{% endblock %}
+{% block footer_scripts_add %}
+<script>
+  {% for p_attribute in parent_attribute %}
+    $('.all{{p_attribute.id}}').on('change', function() {
+      $('input[name="parent{{p_attribute.id}}"]').prop('checked', this.checked);
+    });
+  {% endfor %}
+  </script>
+{% endblock %}

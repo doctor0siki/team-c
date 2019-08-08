@@ -3,14 +3,23 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Model\Dao\User;
-
+use Model\Dao\ParentAttribute;
+use Model\Dao\ChildAttribute;
 
 // 会員登録ページコントローラ
 $app->get('/register/', function (Request $request, Response $response) {
 
+
     //GETされた内容を取得します。
     $data = $request->getQueryParams();
+    $parent_attribute = new ParentAttribute($this->db);
+    $child_attribute = new ChildAttribute($this->db);
 
+    $param = array();
+    $data["parent_attribute"] = $parent_attribute->select($param,"","","",true);
+    $data["child_attribute"] = $child_attribute->select($param,"","","",true);
+
+    var_dump($data);
     // Render index view
     return $this->view->render($response, 'register/register.twig', $data);
 
