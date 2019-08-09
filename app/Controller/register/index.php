@@ -10,6 +10,9 @@ use Model\Dao\UserAttribute;
 // 会員登録ページコントローラ
 $app->get('/register/', function (Request $request, Response $response) {
 
+    if($this->session["user_info"] != null) {
+      return $response->withRedirect('/main/');
+    }
 
     //GETされた内容を取得します。
     $data = $request->getQueryParams();
