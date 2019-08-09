@@ -44,10 +44,10 @@
                                 <label>ジャンル選択</label>
                                 {% for p_attribute in parent_attribute %}
                                   <details>
-                                    <summary><input type="checkbox" class="all{{p_attribute.id}}"/>{{p_attribute.name}}</summary>
+                                    <summary><label><input type="checkbox" class="all{{p_attribute.id}}"/>{{p_attribute.name}}</label></summary>
                                     {% for c_attribute in child_attribute %}
                                       {% if p_attribute.id == c_attribute.parent_attribute_id %}
-                                        <input type="checkbox" name="{{p_attribute.id}}[]" value="{{c_attribute.id}}" />{{c_attribute.name}}
+                                        <label><input type="checkbox" name="{{p_attribute.id}}[]" value="{{c_attribute.id}}" />{{c_attribute.name}}</label>
                                       {% endif %}
                                     {% endfor %}
                                   </details>

@@ -20,7 +20,6 @@ $app->get('/register/', function (Request $request, Response $response) {
     $data["parent_attribute"] = $parent_attribute->select($param,"","","",true);
     $data["child_attribute"] = $child_attribute->select($param,"","","",true);
 
-    var_dump($data);
     // Render index view
     return $this->view->render($response, 'register/register.twig', $data);
 
