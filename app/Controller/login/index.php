@@ -10,6 +10,10 @@ $app->get('/login/', function (Request $request, Response $response) {
     //GETされた内容を取得します。
     $data = $request->getQueryParams();
 
+    if($this->session["user_info"] != null) {
+      return $response->withRedirect('/main/');
+    }
+
     // Render index view
     return $this->view->render($response, 'login/login.twig', $data);
 
