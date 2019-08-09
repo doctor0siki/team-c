@@ -1,0 +1,83 @@
+{% extends 'layout/layout.twig' %}
+
+{% block page_content %}
+  <div class="contents" style="width:960px;height:1020px;">
+    <div class="col-xs-10 col-sm-3 col-md-2" id="tab-box" style="border: 1px solid;float: left;margin: 50px 0; ">
+      <ul class="nav flex-column">
+        <a href= "#" class="tab_btn">タブ</a>
+          <li class="nav-item" style="border-bottom: 1px solid;">
+            ようこそ~〇〇さん
+          </li>
+          <li class="nav-item" style="border-bottom: 1px solid;">
+            フレンド
+          </li>
+          <li class="nav-item" style="border-bottom: 1px solid;">
+            お気に入りの間
+          </li>
+          <li class="nav-item" style="border-bottom: 1px solid;">
+            ユーザー情報変更
+          </li>
+      </ul>
+      <style>
+
+      .nav-item {
+        display: none;
+      }
+
+      </style>
+    </div>
+    <div class="right-side-content"style="">
+      <table style="border: 1px solid;margin: 0 auto;">
+          <tr style="border-bottom: 1px solid;">
+            {% for parent_attribute in parent_attributes %}
+              <th>
+                  {{parent_attribute.comment}}
+              </th>
+            {% endfor %}
+          </tr>
+          <tr style="border-bottom: 1px solid;">
+            {% for parent_attribute in parent_attributes %}
+              <td>
+                {{parent_attribute.name}}の間
+              </td>
+          {% endfor %}
+        </tr>
+        <tr style="border-bottom: 1px solid;">
+          {% for parent_attribute in parent_attributes %}
+          <td>
+            <img src="{{parent_attribute.img_url}}" style="width:300px; height: 300px;" />
+          </td>
+          {% endfor %}
+        </tr>
+        <tr style="border-bottom: 1px solid;">
+          {% for parent_attribute in parent_attributes %}
+          <td>
+            <button>
+              <a href="http://team-c.2021.local/room/{{parent_attribute.id}}">参加</a>
+            </button>
+          </td>
+          {% endfor %}
+        </tr>
+        <tr style="border-bottom: 1px solid;">
+          {% for room_user in room_users %}
+          <td>
+            <div class="wrap-room-member" style="border: 1px solid;width: 50px;">
+              <label>{{room_user.room_member }} / 4 </label>
+            </div>
+          </td>
+          {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer_scripts_add %}
+<script>
+$(function(){
+  $('.tab_btn').on('click', function(){
+    $('.nav-item').toggle();
+  })
+});
+</script>
+{% endblock %}
