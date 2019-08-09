@@ -13,12 +13,8 @@
   text-align: center;
 }
 
-
-table, td {
+table, th, td {
     border: none;
-}
-.font{
-  font-size: 80%;
 }
 
 </style>
@@ -26,9 +22,9 @@ table, td {
 
 {% block page_content %}
   <div class="contents" style="width:960px;height:1020px;">
-    <div class="right-side-content">
-      <table >
-          <tr >
+    <div class="right-side-content"style="">
+      <table style="border: 1px solid;margin: 0 auto;">
+          <tr style="border-bottom: 1px solid;">
             {% for parent_attribute in parent_attributes %}
               <td>
                 {{parent_attribute.name}}の間
@@ -36,7 +32,7 @@ table, td {
           {% endfor %}
         </tr>
 
-        <tr >
+        <tr style="border-bottom: 1px solid;">
           {% for parent_attribute in parent_attributes %}
           <td>
             <img src="{{parent_attribute.img_url}}" style="width:300px; height: 300px;" />
@@ -44,7 +40,7 @@ table, td {
           {% endfor %}
         </tr>
 
-        <tr class="font">
+        <tr style="border-bottom: 1px solid;">
           {% for parent_attribute in parent_attributes %}
             <th>
                 {{parent_attribute.comment}}
@@ -52,7 +48,7 @@ table, td {
           {% endfor %}
         </tr>
 
-        <tr >
+        <tr style="border-bottom: 1px solid;">
           {% for parent_attribute in parent_attributes %}
           <td>
             <button>
@@ -62,7 +58,7 @@ table, td {
           {% endfor %}
         </tr>
 
-        <tr >
+        <tr style="border-bottom: 1px solid;">
           {% for room_user in room_users %}
           <td>
             {{room_user.room_member }} / 4
