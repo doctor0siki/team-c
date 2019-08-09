@@ -9,8 +9,8 @@ use Model\Dao\Room;
 $app->get('/main/', function(Request $request, Response $response){
   $data = $request->getQueryParams();
 
-  if($this->session["user_info"] != null) {
-    return $response->withRedirect('/main/');
+  if($this->session["user_info"] == null) {
+    return $response->withRedirect('/');
   }
 
   $parent_attribute = new ParentAttribute($this->db);
