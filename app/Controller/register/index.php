@@ -17,7 +17,7 @@ $app->get('/register/', function (Request $request, Response $response) {
     $child_attribute = new ChildAttribute($this->db);
 
     $param = array();
-    $data["parent_attribute"] = $parent_attribute->select($param,"","","",true);
+    $data["parent_attribute"] = $parent_attribute->select(array("register_display" => 1),"","","",true);
     $data["child_attribute"] = $child_attribute->select($param,"","","",true);
 
     // Render index view
@@ -47,7 +47,7 @@ $app->post('/register/', function (Request $request, Response $response) {
         // 入力フォームを再度表示します
 
         $param = array();
-        $data["parent_attribute"] = $parent_attribute->select($param,"","","",true);
+        $data["parent_attribute"] = $parent_attribute->select(array("register_display" => 1),"","","",true);
         $data["child_attribute"] = $child_attribute->select($param,"","","",true);
 
         return $this->view->render($response, 'register/register.twig', $data);
