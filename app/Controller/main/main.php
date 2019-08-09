@@ -20,6 +20,5 @@ $app->get('/main/', function(Request $request, Response $response){
   $param = array();
   $data["parent_attributes"] = $parent_attribute->select($param, "", "", "", true);
   $data["room_users"] = $room_user->get_room_user();
-  var_dump($data);
   return $this->view->render($response, '/main/main.twig', $data);
 });
