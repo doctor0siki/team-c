@@ -19,6 +19,10 @@ $app->get('/room/select', function (Request $request, Response $response) {
 //部屋入室コントローラ
 $app->get('/room/{id}', function (Request $request, Response $response, array $args) {
 
+    if($this->session["user_info"] == null) {
+      return $response->withRedirect('/login/');
+    }
+
     //POSTされた内容を取得します
     $data = $request->getParsedBody();
 
