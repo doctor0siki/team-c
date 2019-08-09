@@ -1,0 +1,71 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}ルーム{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+
+    <div class="page-header text-center">
+        <img src="{{ room_data.img_url }}" height="100">
+        <h1>{{ room_data.name }}の間</h1>
+        <div>{{ room_data.comment }}</div>
+    </div>
+    <div class="container">
+        <div class="p2p-media">
+            <div class="remote-stream">
+
+            </div>
+            <div class="local-stream">
+
+                <p>あなたのID：<span id="js-local-id"></span></p>
+                <input type="text" placeholder="相手のIDを入れてください" id="js-remote-id">
+                <button id="js-call-trigger">話す</button>
+                <button id="js-close-trigger">もう寝る</button>
+            </div>
+        </div>
+        <p class="meta" id="js-meta"></p>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="well">
+                        <center>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td align="center">{% if users[0].name %}{{ users[0].name }}さん{% else %}{% endif %}<br><video id="js-local-stream" width="300"></video></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{% if users[1].name %}{{ users[1].name }}さん{% else %}{% endif %}<br><video id="js-remote-stream" width="300"></video></td>
+                                    <td align="center"><img src="https://wikiwiki.jp/nekoatsume/?plugin=ref&page=%E6%9A%96%E6%88%BF%E5%99%A8%E5%85%B7%E7%B3%BB&src=%E3%81%93%E3%81%9F%E3%81%A4.png&rev=c1c245128365a44b2dc159151c4029f9">
+                                    </td>
+                                    <td>{% if users[2].name %}{{ users[2].name }}さん{% else %}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td align="center">{% if users[3].name %}{{ users[3].name }}さん{% else %}{% endif %}</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}
+    <script src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+
+{% endblock %}
