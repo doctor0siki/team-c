@@ -1,5 +1,7 @@
 <?php
 
+use Model\Dao\ParentAttribute;
+use Model\Dao\RoomUser;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -15,15 +17,27 @@ $app->get('/room/select', function (Request $request, Response $response) {
 });
 
 //部屋入室コントローラ
-$app->post('/room/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/room/{id}', function (Request $request, Response $response, array $args) {
 
     //POSTされた内容を取得します
     $data = $request->getParsedBody();
 
-    $room_id = $args["id"];
+    //URLパラメータの内容を
+    $params["id"] = $args["id"];
+
+    //親属性を取得します
+    $parent_attr = new ParentAttribute($this->db);
+
+    //親属性を取得します
+    $room_user = new RoomUser($this->db);
+
+    //いまこのルームに居るユーザーを取得する。
+    $data["users"] = $room_user->getRoomUser($params["id"]);
+
+    //ルーム情報を取得します。
+    $data["room_data"] = $parent_attr->select($params);
 
     // Render index view
     return $this->view->render($response, 'room/index.twig', $data);
-
 
 });
