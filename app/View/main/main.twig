@@ -59,26 +59,13 @@
           {% endfor %}
         </tr>
         <tr style="border-bottom: 1px solid;">
+          {% for room_user in room_users %}
           <td>
-            <div class="wrap-room-member" style="border: 1px solid;width: 30px;">
-              1/4
+            <div class="wrap-room-member" style="border: 1px solid;width: 50px;">
+              <label>{{room_user.room_member }} / 4 </label>
             </div>
           </td>
-          <td>
-            <div class="wrap-room-member" style="border: 1px solid;width: 30px;">
-              2/4
-            </div>
-          </td>
-          <td>
-            <div class="wrap-room-member" style="border: 1px solid;width: 30px;">
-              3/4
-            </div>
-          </td>
-          <td>
-            <div class="wrap-room-member" style="border: 1px solid;width: 30px;">
-              4/4
-            </div>
-          </td>
+          {% endfor %}
         </tr>
       </table>
     </div>
